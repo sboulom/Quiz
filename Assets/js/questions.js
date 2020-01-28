@@ -9,9 +9,15 @@ var questions = [
      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
      answer: "parentheses"
        },
-    
-     title: ""
-     choices:
-     answer:
-    
+    {
+     title: "Which is not a main languate in web development?",
+     choices: ["HTML", "CSC", "CSS", "JavaScripts"],
+     answer: "CSC"
+       },
+
+    {
+     title: "What is a good practice when writing JavaScript",
+     choices: ["strings", "console.log", "UCLA bootcamp", "Los Angeles Lakers"],
+     answer: "Console.log"
+       },
 ]

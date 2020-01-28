@@ -1,7 +1,88 @@
+var currentScore = 0
+var score = 0
+var totQuestions = questions.length;
+var timer = document.getElementById("timer")
+var questionDiv = document.getElementById("questions")
+var answers = document.getElementById("answers")
+var button0 = document.getElementById("button0")
+var button1 = document.getElementById("button1")
+var button2 = document.getElementById("button2")
+var button3 = document.getElementById("button3")
+var startBtn = document.getElementById("startBtn")
+var main = document.getElementById("main")
+var initialDiv = document.getElementById("initialDiv")
+var setIntervalId;
+var timeRemaining = totQuestions * 15
+var indexQuestion = 0
+var countTime = 0
+startBtn.addEventListener("click", startQuiz)
 
 
+function startQuiz (){
+     startBtn.classList.add("hideElement")
+     main.classList.remove("hideElement")
+
+     button0.setAttribute("class", "choiceBtn")
+     button1.setAttribute("class", "choiceBtn")
+     button2.setAttribute("class", "choiceBtn")
+     button3.setAttribute("class", "choiceBtn")
+    
+    setIntervalId = setInterval(countDown,1000)
+}
+
+document.querySelector(".choiceBtn").addEventListener("click", checkAnswer)
 
 
+function checkAnswer(){
+    var getAnswer = this.getAttribute("data-answer") 
+    var getButtonText = this.textContent
+
+    if(getAnswer === getButtonText){
+        alert("Correct Answer")
+    
+    } 
+
+}
+
+function countDown(){
+     
+    timer.textContent = timeRemaining
+     timeRemaining--
+     if(timeRemaining === 0){
+        clearInterval(setIntervalId)
+        timer.textContent = 0
+        main.classList.add("hideElement")
+        initialDiv.classList.remove("hideElement")
+
+    }
+   
+     if(countTime === 15 || countTime === 0){
+         if(indexQuestion < questions.length){
+            questionDiv.textContent = questions[indexQuestion].title
+            button0.textContent = questions[indexQuestion].choices[0]
+            button1.textContent = questions[indexQuestion].choices[1]
+            button2.textContent = questions[indexQuestion].choices[2]
+            button3.textContent = questions[indexQuestion].choices[3]
+              
+            button0.setAttribute("data-answer",questions[indexQuestion].answer)
+            button1.setAttribute("data-answer",questions[indexQuestion].answer)
+            button2.setAttribute("data-answer",questions[indexQuestion].answer)
+            button3.setAttribute("data-answer",questions[indexQuestion].answer)
+               indexQuestion++
+
+               if(countTime === 15){
+                countTime = 0
+               }
+               
+         }
+        
+         
+      
+     }
+     countTime++
+   
+
+}
 
 // Start Quiz
 
