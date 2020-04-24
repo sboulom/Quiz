@@ -6,7 +6,7 @@ function printScores(){
     var olElement = document.getElementById("highScore")
     highScore.forEach(element => {
         var litag = document.createElement("li")
-        litag.textContent = element.initials + " - " + element.score
+        litag.textContent = element.initial + " - " + element.score
         olElement.appendChild(litag)
 
     });
